@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Creche Fermino Magnani</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- ========================================
+     MODAL DE DOAÇÃO
+========================================= -->
+
+<div class="doacao-modal" id="doacaoModal" aria-hidden="true">
+
+    <!-- FUNDO ESCURO -->
+    <div class="doacao-modal-overlay"></div>
+
+
+    <!-- JANELA -->
+    <div class="doacao-modal-box" role="dialog" aria-modal="true" aria-labelledby="doacaoTitulo">
+
+        <!-- FECHAR -->
+        <button class="doacao-fechar" id="fecharDoacao" type="button" aria-label="Fechar formulário de doação">
+            ×
+        </button>
+
+
+        <!-- CABEÇALHO -->
+        <div class="doacao-modal-header">
+
+            <span class="doacao-modal-tag">
+                FAÇA PARTE
+            </span>
+
+            <h2 id="doacaoTitulo">
+                Sua ajuda transforma
+                cuidado em oportunidades.
+            </h2>
+
+            <p>
+                Escolha como deseja contribuir com
+                o Lar da Criança Fermino Magnani.
+            </p>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+        <form class="doacao-form" id="doacaoForm">
+
+            <!-- VALOR -->
+            <div class="doacao-grupo">
+
+                <label class="doacao-label">
+                    Quanto você deseja doar?
+                </label>
+
+                <div class="doacao-valores">
+
+                    <button type="button" class="valor-doacao" data-valor="20">
+                        R$ 20
+                    </button>
+
+                    <button type="button" class="valor-doacao" data-valor="50">
+                        R$ 50
+                    </button>
+
+                    <button type="button" class="valor-doacao" data-valor="100">
+                        R$ 100
+                    </button>
+
+                    <button type="button" class="valor-doacao" data-valor="200">
+                        R$ 200
+                    </button>
+
+                </div>
+
+
+                <div class="valor-personalizado">
+
+                    <span>R$</span>
+
+                    <input type="number" id="valorPersonalizado" name="valor" placeholder="Outro valor" min="1">
+
+                </div>
+
+            </div>
+
+
+            <!-- DADOS -->
+            <div class="doacao-campos-grid">
+
+                <div class="doacao-campo">
+
+                    <label for="nomeDoador">
+                        Nome
+                    </label>
+
+                    <input type="text" id="nomeDoador" name="nome" placeholder="Seu nome" required>
+
+                </div>
+
+
+                <div class="doacao-campo">
+
+                    <label for="emailDoador">
+                        E-mail
+                    </label>
+
+                    <input type="email" id="emailDoador" name="email" placeholder="seu@email.com" required>
+
+                </div>
+
+
+                <div class="doacao-campo">
+
+                    <label for="telefoneDoador">
+                        Telefone
+                    </label>
+
+                    <input type="tel" id="telefoneDoador" name="telefone" placeholder="(14) 00000-0000">
+
+                </div>
+
+
+                <div class="doacao-campo">
+
+                    <label for="tipoDoacao">
+                        Tipo de contribuição
+                    </label>
+
+                    <select id="tipoDoacao" name="tipo">
+                        <option value="unica">
+                            Doação única
+                        </option>
+
+                        <option value="mensal">
+                            Quero ajudar mensalmente
+                        </option>
+
+                        <option value="empresa">
+                            Doação empresarial
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAGEM OPCIONAL -->
+            <div class="doacao-campo doacao-campo-completo">
+
+                <label for="mensagemDoador">
+                    Mensagem
+                    <span>(opcional)</span>
+                </label>
+
+                <textarea id="mensagemDoador" name="mensagem" placeholder="Deixe uma mensagem para o Lar..."
+                    rows="3"></textarea>
+
+            </div>
+
+
+            <!-- CHECKBOX -->
+            <label class="doacao-checkbox">
+
+                <input type="checkbox" name="novidades">
+
+                <span class="check-custom"></span>
+
+                <span>
+                    Quero receber novidades sobre as ações do Lar.
+                </span>
+
+            </label>
+
+
+            <!-- BOTÃO FINAL -->
+            <button type="submit" class="doacao-enviar">
+                Continuar doação
+                <span>→</span>
+            </button>
+
+
+            <p class="doacao-observacao">
+                As informações de pagamento serão apresentadas
+                na próxima etapa.
+            </p>
+
+        </form>
+
+
+        <!-- SUCESSO -->
+        <div class="doacao-sucesso" id="doacaoSucesso">
+
+            <div class="doacao-sucesso-icone">
+                ✓
+            </div>
+
+            <span class="doacao-modal-tag">
+                OBRIGADO
+            </span>
+
+            <h2>
+                Seu apoio faz parte dessa história.
+            </h2>
+
+            <p>
+                Esta é uma demonstração do fluxo de doação.
+                Depois vocês podem integrar aqui o Pix ou
+                outra forma de pagamento oficial.
+            </p>
+
+            <button type="button" class="doacao-voltar" id="fecharSucesso">
+                Voltar para o site
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     MODAL SEJA PARCEIRO
+========================================= -->
+
+<div class="parceria-modal" id="parceriaModal" aria-hidden="true">
+
+    <div class="parceria-modal-overlay"></div>
+
+    <div class="parceria-modal-box" role="dialog" aria-modal="true" aria-labelledby="parceriaTitulo">
+
+        <!-- FECHAR -->
+        <button class="parceria-fechar" id="fecharParceria" type="button" aria-label="Fechar formulário de parceria">
+            ×
+        </button>
+
+
+        <!-- CABEÇALHO -->
+        <div class="parceria-modal-header">
+
+            <span class="parceria-modal-tag">
+                SEJA PARCEIRO
+            </span>
+
+            <h2 id="parceriaTitulo">
+                Sua empresa também pode
+                fazer parte dessa história.
+            </h2>
+
+            <p>
+                Empresas e organizações podem apoiar o Lar
+                por meio de contribuições, projetos, campanhas
+                e outras formas de parceria.
+            </p>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+        <form class="parceria-form" id="parceriaForm">
+
+            <!-- DADOS DA EMPRESA -->
+            <div class="parceria-secao">
+
+                <span class="parceria-secao-titulo">
+                    Sobre a empresa
+                </span>
+
+                <div class="parceria-campos-grid">
+
+                    <div class="parceria-campo">
+
+                        <label for="empresaNome">
+                            Empresa / organização
+                        </label>
+
+                        <input type="text" id="empresaNome" name="empresa" placeholder="Nome da empresa" required>
+
+                    </div>
+
+
+                    <div class="parceria-campo">
+
+                        <label for="empresaSegmento">
+                            Segmento
+                        </label>
+
+                        <input type="text" id="empresaSegmento" name="segmento"
+                            placeholder="Ex.: comércio, indústria, serviços">
+
+                    </div>
+
+
+                    <div class="parceria-campo">
+
+                        <label for="responsavelNome">
+                            Responsável
+                        </label>
+
+                        <input type="text" id="responsavelNome" name="responsavel" placeholder="Nome do responsável"
+                            required>
+
+                    </div>
+
+
+                    <div class="parceria-campo">
+
+                        <label for="responsavelCargo">
+                            Cargo
+                        </label>
+
+                        <input type="text" id="responsavelCargo" name="cargo" placeholder="Ex.: gerente, proprietário">
+
+                    </div>
+
+
+                    <div class="parceria-campo">
+
+                        <label for="empresaEmail">
+                            E-mail
+                        </label>
+
+                        <input type="email" id="empresaEmail" name="email" placeholder="empresa@email.com" required>
+
+                    </div>
+
+
+                    <div class="parceria-campo">
+
+                        <label for="empresaTelefone">
+                            Telefone
+                        </label>
+
+                        <input type="tel" id="empresaTelefone" name="telefone" placeholder="(14) 00000-0000">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIPO DE PARCERIA -->
+            <div class="parceria-secao">
+
+                <span class="parceria-secao-titulo">
+                    Como sua empresa gostaria de ajudar?
+                </span>
+
+                <div class="parceria-opcoes">
+
+                    <button type="button" class="parceria-opcao" data-parceria="financeira">
+                        Apoio financeiro
+                    </button>
+
+                    <button type="button" class="parceria-opcao" data-parceria="materiais">
+                        Doação de materiais
+                    </button>
+
+                    <button type="button" class="parceria-opcao" data-parceria="servicos">
+                        Serviços / estrutura
+                    </button>
+
+                    <button type="button" class="parceria-opcao" data-parceria="campanha">
+                        Campanhas e eventos
+                    </button>
+
+                </div>
+
+                <input type="hidden" id="tipoParceria" name="tipoParceria">
+
+            </div>
+
+
+            <!-- FAIXA DE CONTRIBUIÇÃO -->
+            <div class="parceria-campo parceria-campo-completo">
+
+                <label for="faixaApoio">
+                    Faixa de apoio pretendida
+                </label>
+
+                <select id="faixaApoio" name="faixaApoio">
+                    <option value="">
+                        Selecione uma opção
+                    </option>
+
+                    <option value="ate500">
+                        Até R$ 500
+                    </option>
+
+                    <option value="500-1500">
+                        R$ 500 a R$ 1.500
+                    </option>
+
+                    <option value="1500-5000">
+                        R$ 1.500 a R$ 5.000
+                    </option>
+
+                    <option value="mais5000">
+                        Acima de R$ 5.000
+                    </option>
+
+                    <option value="outro">
+                        Outro tipo de apoio
+                    </option>
+                </select>
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+            <div class="parceria-campo parceria-campo-completo">
+
+                <label for="mensagemParceria">
+                    Conte um pouco sobre a parceria
+                </label>
+
+                <textarea id="mensagemParceria" name="mensagem" rows="4"
+                    placeholder="Como sua empresa gostaria de contribuir?"></textarea>
+
+            </div>
+
+
+            <!-- CHECK -->
+            <label class="parceria-checkbox">
+
+                <input type="checkbox" id="autorizaContato" required>
+
+                <span class="parceria-check-custom"></span>
+
+                <span>
+                    Autorizo o Lar a entrar em contato
+                    para conversar sobre esta parceria.
+                </span>
+
+            </label>
+
+
+            <!-- BOTÃO -->
+            <button type="submit" class="parceria-enviar">
+                Quero ser parceiro
+                <span>→</span>
+            </button>
+
+        </form>
+
+
+        <!-- SUCESSO -->
+        <div class="parceria-sucesso" id="parceriaSucesso">
+
+            <div class="parceria-sucesso-icone">
+                ✓
+            </div>
+
+            <span class="parceria-modal-tag">
+                OBRIGADO
+            </span>
+
+            <h2>
+                Que bom ter sua empresa
+                interessada em fazer parte.
+            </h2>
+
+            <p>
+                As informações foram preenchidas com sucesso.
+                Depois vocês podem conectar este formulário ao
+                e-mail, banco de dados ou sistema de contato do Lar.
+            </p>
+
+            <button type="button" class="parceria-voltar" id="fecharParceriaSucesso">
+                Voltar para o site
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     MODAL DE COMPARTILHAMENTO
+========================================= -->
+
+<div class="compartilhar-modal" id="compartilharModal" aria-hidden="true">
+
+    <div class="compartilhar-overlay"></div>
+
+    <div class="compartilhar-box" role="dialog" aria-modal="true" aria-labelledby="compartilharTitulo">
+
+        <!-- FECHAR -->
+        <button class="compartilhar-fechar" id="fecharCompartilhar" type="button" aria-label="Fechar compartilhamento">
+            ×
+        </button>
+
+
+        <!-- CABEÇALHO -->
+        <div class="compartilhar-header">
+
+            <span class="compartilhar-tag">
+                COMPARTILHE
+            </span>
+
+            <h2 id="compartilharTitulo">
+                Ajude essa história
+                a chegar mais longe.
+            </h2>
+
+            <p>
+                Compartilhe o trabalho do Lar com outras pessoas
+                e ajude mais gente a conhecer essa causa.
+            </p>
+
+        </div>
+
+
+        <!-- OPÇÕES -->
+        <div class="compartilhar-opcoes">
+
+
+            <!-- WHATSAPP -->
+            <button type="button" class="compartilhar-opcao compartilhar-whatsapp" data-rede="whatsapp">
+
+                <span class="compartilhar-icone">
+                    WA
+                </span>
+
+                <span>
+                    WhatsApp
+                </span>
+
+            </button>
+
+
+            <!-- FACEBOOK -->
+            <button type="button" class="compartilhar-opcao compartilhar-facebook" data-rede="facebook">
+
+                <span class="compartilhar-icone">
+                    f
+                </span>
+
+                <span>
+                    Facebook
+                </span>
+
+            </button>
+
+
+            <!-- X / TWITTER -->
+            <button type="button" class="compartilhar-opcao compartilhar-instagram" data-rede="instagram">
+                <span class="compartilhar-icone">
+                    ◎
+                </span>
+
+                <span>
+                    Instagram
+                </span>
+            </button>
+
+
+            <!-- EMAIL -->
+            <button type="button" class="compartilhar-opcao compartilhar-email" data-rede="email">
+
+                <span class="compartilhar-icone">
+                    @
+                </span>
+
+                <span>
+                    E-mail
+                </span>
+
+            </button>
+
+
+            <!-- COMPARTILHAMENTO NATIVO -->
+            <button type="button" class="compartilhar-opcao compartilhar-nativo" id="compartilharNativo">
+
+                <span class="compartilhar-icone">
+                    ↗
+                </span>
+
+                <span>
+                    Compartilhar
+                </span>
+
+            </button>
+
+
+            <!-- COPIAR LINK -->
+            <button type="button" class="compartilhar-opcao compartilhar-copiar" id="copiarLink">
+
+                <span class="compartilhar-icone">
+                    ⧉
+                </span>
+
+                <span>
+                    Copiar link
+                </span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FEEDBACK -->
+        <div class="compartilhar-feedback" id="compartilharFeedback">
+            Link copiado!
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     MODAL EVENTOS + VOLUNTARIADO
+========================================= -->
+
+<div class="eventos-modal" id="eventosModal" aria-hidden="true">
+
+    <div class="eventos-overlay"></div>
+
+    <div class="eventos-modal-box" role="dialog" aria-modal="true" aria-labelledby="eventosTitulo">
+
+        <!-- FECHAR -->
+        <button class="eventos-fechar" id="fecharEventos" type="button" aria-label="Fechar ações e voluntariado">
+            ×
+        </button>
+
+
+        <!-- CABEÇALHO -->
+        <div class="eventos-header">
+
+            <span class="eventos-tag">
+                PARTICIPE
+            </span>
+
+            <h2 id="eventosTitulo">
+                Existem muitas formas
+                de fazer parte.
+            </h2>
+
+            <p>
+                Conheça as próximas ações do Lar e,
+                se quiser, inscreva-se para participar
+                como voluntário.
+            </p>
+
+        </div>
+
+
+        <!-- ========================================
+             PRÓXIMAS AÇÕES
+        ========================================= -->
+
+        <div class="eventos-proximos">
+
+            <div class="eventos-secao-topo">
+
+                <div>
+                    <span class="eventos-subtag">
+                        PRÓXIMAS AÇÕES
+                    </span>
+
+                    <h3>
+                        O que vem por aí
+                    </h3>
+                </div>
+
+                <p>
+                    Eventos de exemplo para demonstração do site.
+                </p>
+
+            </div>
+
+
+            <div class="eventos-lista">
+
+                <!-- EVENTO 1 -->
+                <article class="evento-card">
+
+                    <div class="evento-data">
+                        <strong>12</strong>
+                        <span>OUT</span>
+                    </div>
+
+                    <div class="evento-conteudo">
+
+                        <span class="evento-tipo">
+                            EVENTO
+                        </span>
+
+                        <h4>
+                            Tarde de Brincadeiras
+                        </h4>
+
+                        <p>
+                            Uma tarde especial com atividades
+                            recreativas, oficinas e integração
+                            com as crianças.
+                        </p>
+
+                        <div class="evento-info">
+                            <span>14h às 17h</span>
+                            <span>Lar Fermino Magnani</span>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="evento-participar" data-evento="Tarde de Brincadeiras">
+                        Quero participar
+                        <span>→</span>
+                    </button>
+
+                </article>
+
+
+                <!-- EVENTO 2 -->
+                <article class="evento-card">
+
+                    <div class="evento-data">
+                        <strong>26</strong>
+                        <span>OUT</span>
+                    </div>
+
+                    <div class="evento-conteudo">
+
+                        <span class="evento-tipo">
+                            CAMPANHA
+                        </span>
+
+                        <h4>
+                            Arrecadação Solidária
+                        </h4>
+
+                        <p>
+                            Campanha para arrecadação de alimentos,
+                            itens de higiene e materiais para
+                            as atividades do Lar.
+                        </p>
+
+                        <div class="evento-info">
+                            <span>9h às 16h</span>
+                            <span>Santa Cruz do Rio Pardo</span>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="evento-participar" data-evento="Arrecadação Solidária">
+                        Quero participar
+                        <span>→</span>
+                    </button>
+
+                </article>
+
+
+                <!-- EVENTO 3 -->
+                <article class="evento-card">
+
+                    <div class="evento-data">
+                        <strong>09</strong>
+                        <span>NOV</span>
+                    </div>
+
+                    <div class="evento-conteudo">
+
+                        <span class="evento-tipo">
+                            MUTIRÃO
+                        </span>
+
+                        <h4>
+                            Dia de Cuidar do Lar
+                        </h4>
+
+                        <p>
+                            Um dia de trabalho voluntário para
+                            organização, jardinagem e pequenas
+                            melhorias nos espaços da instituição.
+                        </p>
+
+                        <div class="evento-info">
+                            <span>8h às 13h</span>
+                            <span>Lar Fermino Magnani</span>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="evento-participar" data-evento="Dia de Cuidar do Lar">
+                        Quero participar
+                        <span>→</span>
+                    </button>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================
+             VOLUNTARIADO
+        ========================================= -->
+
+        <div class="voluntariado-area">
+
+            <div class="voluntariado-intro">
+
+                <span class="eventos-subtag">
+                    VOLUNTARIADO
+                </span>
+
+                <h3>
+                    Quer ajudar de perto?
+                </h3>
+
+                <p>
+                    Preencha seus dados e conte como gostaria
+                    de participar. A equipe do Lar poderá entrar
+                    em contato quando surgir uma oportunidade.
+                </p>
+
+            </div>
+
+
+            <form class="voluntariado-form" id="voluntariadoForm">
+
+                <div class="voluntariado-grid">
+
+                    <div class="voluntariado-campo">
+
+                        <label for="voluntarioNome">
+                            Nome
+                        </label>
+
+                        <input type="text" id="voluntarioNome" name="nome" placeholder="Seu nome" required>
+
+                    </div>
+
+
+                    <div class="voluntariado-campo">
+
+                        <label for="voluntarioEmail">
+                            E-mail
+                        </label>
+
+                        <input type="email" id="voluntarioEmail" name="email" placeholder="seu@email.com" required>
+
+                    </div>
+
+
+                    <div class="voluntariado-campo">
+
+                        <label for="voluntarioTelefone">
+                            Telefone
+                        </label>
+
+                        <input type="tel" id="voluntarioTelefone" name="telefone" placeholder="(14) 00000-0000">
+
+                    </div>
+
+
+                    <div class="voluntariado-campo">
+
+                        <label for="voluntarioEvento">
+                            Ação de interesse
+                        </label>
+
+                        <select id="voluntarioEvento" name="evento">
+                            <option value="">
+                                Voluntariado geral
+                            </option>
+
+                            <option value="Tarde de Brincadeiras">
+                                Tarde de Brincadeiras
+                            </option>
+
+                            <option value="Arrecadação Solidária">
+                                Arrecadação Solidária
+                            </option>
+
+                            <option value="Dia de Cuidar do Lar">
+                                Dia de Cuidar do Lar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ÁREA DE INTERESSE -->
+                <div class="voluntariado-campo">
+
+                    <label>
+                        Como você gostaria de ajudar?
+                    </label>
+
+                    <div class="voluntariado-opcoes">
+
+                        <button type="button" class="voluntariado-opcao" data-area="eventos">
+                            Eventos
+                        </button>
+
+                        <button type="button" class="voluntariado-opcao" data-area="recreacao">
+                            Recreação
+                        </button>
+
+                        <button type="button" class="voluntariado-opcao" data-area="organizacao">
+                            Organização
+                        </button>
+
+                        <button type="button" class="voluntariado-opcao" data-area="campanhas">
+                            Campanhas
+                        </button>
+
+                    </div>
+
+                    <input type="hidden" id="areaVoluntariado" name="area">
+
+                </div>
+
+
+                <!-- DISPONIBILIDADE -->
+                <div class="voluntariado-campo">
+
+                    <label for="disponibilidadeVoluntario">
+                        Disponibilidade
+                    </label>
+
+                    <select id="disponibilidadeVoluntario" name="disponibilidade">
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="semana">
+                            Durante a semana
+                        </option>
+
+                        <option value="finais">
+                            Finais de semana
+                        </option>
+
+                        <option value="eventos">
+                            Apenas em eventos específicos
+                        </option>
+
+                        <option value="flexivel">
+                            Horário flexível
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MENSAGEM -->
+                <div class="voluntariado-campo">
+
+                    <label for="mensagemVoluntario">
+                        Conte um pouco sobre você
+                    </label>
+
+                    <textarea id="mensagemVoluntario" name="mensagem" rows="4"
+                        placeholder="Conte como gostaria de contribuir..."></textarea>
+
+                </div>
+
+
+                <label class="voluntariado-checkbox">
+
+                    <input type="checkbox" required>
+
+                    <span class="voluntariado-check"></span>
+
+                    <span>
+                        Autorizo o Lar a entrar em contato
+                        sobre oportunidades de voluntariado.
+                    </span>
+
+                </label>
+
+
+                <button type="submit" class="voluntariado-enviar">
+                    Quero participar
+                    <span>→</span>
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ========================================
+             SUCESSO
+        ========================================= -->
+
+        <div class="voluntariado-sucesso" id="voluntariadoSucesso">
+
+            <div class="voluntariado-sucesso-icone">
+                ✓
+            </div>
+
+            <span class="eventos-tag">
+                INSCRIÇÃO REALIZADA
+            </span>
+
+            <h2>
+                Obrigado por querer
+                fazer parte.
+            </h2>
+
+            <p>
+                Seu interesse foi registrado.
+                Esta é uma demonstração do fluxo e,
+                futuramente, o formulário pode ser conectado
+                ao e-mail ou banco de dados do Lar.
+            </p>
+
+            <button type="button" class="voluntariado-voltar" id="fecharVoluntariadoSucesso">
+                Voltar para o site
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header" id="header">
+
+        <div class="header-container">
+
+            <!-- LOGO -->
+            <a href="#" class="logo">
+                <img src="assets/img/logo.png" alt="Creche Fermino Magnani">
+            </a>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav class="nav">
+
+                <a href="#o-lar">
+                    O Lar
+                </a>
+
+                <a href="#o-que-fazemos">
+                    O que fazemos
+                </a>
+
+                <a href="#como-ajudar">
+                    Como ajudar
+                </a>
+
+            </nav>
+
+
+            <!-- CTA HEADER -->
+            <a href="#doacao" class="btn-doar">
+
+                <span>Doar agora</span>
+
+            </a>
+
+
+            <!-- MENU MOBILE -->
+            <button class="menu-mobile" id="menu-mobile" aria-label="Abrir menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <!-- FOTO -->
+            <div class="hero-image"></div>
+
+            <!-- ESCURECIMENTO DA FOTO -->
+            <div class="hero-overlay"></div>
+
+
+            <!-- CONTEÚDO -->
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        MAIS QUE UM LAR, UM FUTURO
+                    </span>
+
+
+                    <h1>
+                        Aqui, toda criança<br>
+                        é vista, ouvida<br>
+                        e tem o direito de<br>
+
+                        <span>
+                            sonhar
+                        </span>
+                    </h1>
+
+
+                    <p>
+                        Há mais de 60 anos, o Lar da Criança
+                        oferece cuidado, acolhimento e oportunidades
+                        para que cada criança possa construir
+                        um futuro melhor.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a href="#como-ajudar" class="btn-primary">
+                            Quero ajudar
+                        </a>
+
+
+                        <a href="#o-lar" class="btn-secondary">
+                            Conheça o Lar
+
+                            <span class="arrow">
+                                →
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================
+     QUEM É O LAR
+========================================= -->
+
+        <section class="quem-lar" id="o-lar">
+            <img src="assets/img/sol.png" alt="" class="elemento-sol" aria-hidden="true">
+
+            <div class="quem-lar-container">
+
+                <!-- FOTO + ELEMENTOS GRÁFICOS -->
+                <div class="quem-lar-foto-area">
+
+                    <div class="quem-lar-imagem">
+
+                        <img src="assets/img/quem-e-o-lar.png" alt="Fachada do Lar da Criança Fermino Magnani">
+
+                    </div>
+
+                    <!-- CORAÇÃO -->
+                    <img src="assets/img/coração.png" alt="" class="elemento-coracao" aria-hidden="true">
+
+                </div>
+
+
+                <!-- CONTEÚDO -->
+                <div class="quem-lar-conteudo">
+
+                    <span class="quem-lar-tag">
+                        QUEM É O LAR
+                    </span>
+
+
+                    <h2>
+                        Um lugar para cuidar,<br>
+                        acolher e transformar.
+                    </h2>
+
+
+                    <p>
+                        O Lar da Criança Fermino Magnani é uma instituição
+                        que há décadas acolhe crianças e oferece cuidado,
+                        alimentação, atividades e oportunidades para o
+                        seu desenvolvimento.
+                    </p>
+
+
+                    <a href="https://www.santacruzdoriopardo.sp.gov.br/assets/uploads/terceiro_setor/arquivos/d7640134e6120f0241bc683d37adbeb2.pdf" target="_blank" class="quem-lar-botao">
+
+                        Saiba mais
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================
+     O QUE FAZEMOS
+========================================= -->
+
+        <section class="o-que-fazemos" id="o-que-fazemos">
+
+            <div class="o-que-fazemos-container">
+
+                <!-- CONTEÚDO ESQUERDO -->
+                <div class="o-que-fazemos-conteudo">
+
+                    <span class="o-que-fazemos-tag">
+                        O QUE FAZEMOS
+                    </span>
+
+                    <h2>
+                        Cuidado que acontece
+                        todos os dias.
+                    </h2>
+
+                    <p>
+                        Conheça as principais ações que fazem parte
+                        da nossa rotina e do nosso propósito.
+                    </p>
+
+                    <a href="https://www.santacruzdoriopardo.sp.gov.br/assets/uploads/terceiro_setor/arquivos/d7640134e6120f0241bc683d37adbeb2.pdf" target="_blank" class="o-que-fazemos-botao">
+
+                        Saiba mais
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- CARDS -->
+                <div class="o-que-fazemos-cards">
+
+
+                    <!-- ALIMENTAÇÃO -->
+                    <article class="fazer-card">
+
+                        <div class="fazer-card-icone">
+
+                            <img src="assets/img/alimentacao.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Alimentação
+                        </h3>
+
+                        <p>
+                            Refeições e cuidados essenciais para o
+                            bem-estar das crianças.
+                        </p>
+
+                    </article>
+
+
+                    <!-- ACOLHIMENTO -->
+                    <article class="fazer-card">
+
+                        <div class="fazer-card-icone">
+
+                            <img src="assets/img/acolhimento.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Acolhimento
+                        </h3>
+
+                        <p>
+                            Um ambiente de cuidado, atenção
+                            e convivência.
+                        </p>
+
+                    </article>
+
+
+                    <!-- ATIVIDADES -->
+                    <article class="fazer-card">
+
+                        <div class="fazer-card-icone">
+
+                            <img src="assets/img/atividades.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Atividades
+                        </h3>
+
+                        <p>
+                            Lazer, criatividade, aprendizado
+                            e diversão.
+                        </p>
+
+                    </article>
+
+
+                    <!-- DESENVOLVIMENTO -->
+                    <article class="fazer-card">
+
+                        <div class="fazer-card-icone">
+
+                            <img src="assets/img/desenvolvimento.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Desenvolvimento
+                        </h3>
+
+                        <p>
+                            Capacitação e oportunidades para
+                            novos caminhos.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================
+        NOSSA HISTÓRIA
+        ========================================= -->
+
+        <section class="nossa-historia" id="nossa-historia">
+
+
+            <div class="nossa-historia-container">
+
+                <!-- ========================================
+             LADO ESQUERDO
+             ========================================= -->
+
+                <div class="historia-esquerda">
+
+                    <!-- TOPO -->
+                    <div class="historia-intro">
+
+                        <span class="historia-tag">
+                            NOSSA HISTÓRIA
+                        </span>
+
+                        <h2>
+                            Uma história construída<br>
+                            desde 1960.
+                        </h2>
+
+                        <p>
+                            Ao longo de mais de seis décadas, o Lar da Criança
+                            Fermino Magnani cresceu com o apoio da comunidade,
+                            ampliou sua atuação e fortaleceu sua missão de cuidar
+                            de crianças e transformar vidas.
+                        </p>
+
+                        <a href="https://docs.google.com/document/d/12FQgbftMUfipTIT-5cEYodX8aiQ0EU8F/edit?usp=sharing&ouid=100052585057552997051&rtpof=true&sd=true" target="_blank" class="historia-botao">
+                            Saiba mais
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+
+                    <!-- FRASE 1 -->
+                    <div class="historia-frase historia-reveal">
+
+                        <p>
+                            Uma história feita de cuidado, dedicação e
+                            muitas mãos unidas por um mesmo propósito.
+                        </p>
+
+                    </div>
+
+
+                    <!-- FOTO -->
+                    <div class="historia-foto historia-reveal">
+
+                        <img src="assets/img/historia-foto.jpeg"
+                            alt="Momento da história do Lar da Criança Fermino Magnani">
+
+                    </div>
+
+
+                    <!-- FRASE 2 -->
+                    <div class="historia-frase historia-reveal">
+
+                        <p>
+                            Mais de seis décadas depois, o propósito continua o mesmo:
+                            acolher, educar e criar novas possibilidades.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+             LADO DIREITO / TIMELINE
+        ========================================= -->
+
+                <div class="historia-direita">
+
+                    <div class="timeline-historia">
+
+
+                        <!-- 1960 -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-azul">
+
+                                <img src="assets/img/historia-1.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    1960
+                                </span>
+
+                                <h3>
+                                    Fundação do Lar
+                                </h3>
+
+                                <p>
+                                    Em 03 de janeiro de 1960, nasce o Lar da Criança
+                                    Fermino Magnani, em Santa Cruz do Rio Pardo.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- MOBILIZAÇÃO -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-amarelo">
+
+                                <img src="assets/img/historia-2.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    INÍCIO DA TRAJETÓRIA
+                                </span>
+
+                                <h3>
+                                    Mobilização da comunidade
+                                </h3>
+
+                                <p>
+                                    A construção foi possível graças à doação do terreno,
+                                    campanhas comunitárias e ao esforço coletivo de pessoas
+                                    que acreditaram no projeto.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- 1963 -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-verde">
+
+                                <img src="assets/img/historia-3.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    1963
+                                </span>
+
+                                <h3>
+                                    Inauguração oficial
+                                </h3>
+
+                                <p>
+                                    Em 19 de maio de 1963, a instituição foi oficialmente
+                                    inaugurada, tornando-se um importante marco para a
+                                    assistência à infância no município.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- 1964 -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-azul">
+
+                                <img src="assets/img/historia-4.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    1964
+                                </span>
+
+                                <h3>
+                                    Estruturação e consolidação
+                                </h3>
+
+                                <p>
+                                    A administração foi confiada à Madre Vitória Lázari
+                                    e às Irmãs Dominicanas da Beata Imelda, fortalecendo
+                                    a organização dos serviços prestados.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- CRESCIMENTO -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-amarelo">
+
+                                <img src="assets/img/historia-5.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    AO LONGO DOS ANOS
+                                </span>
+
+                                <h3>
+                                    Crescimento e fortalecimento
+                                </h3>
+
+                                <p>
+                                    O Lar ampliou sua atuação, seus serviços e sua
+                                    capacidade de atendimento, sempre mantendo o cuidado
+                                    com o desenvolvimento integral das crianças.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- HOJE -->
+                        <article class="historia-item">
+
+                            <div class="historia-item-icon icone-verde">
+
+                                <img src="assets/img/historia-6.png" alt="">
+
+                            </div>
+
+                            <div class="historia-item-conteudo">
+
+                                <span class="historia-ano">
+                                    HOJE
+                                </span>
+
+                                <h3>
+                                    Mais de 60 anos de impacto
+                                </h3>
+
+                                <p>
+                                    Atualmente, o Lar atende 180 crianças em período
+                                    integral e segue investindo em educação, cuidado,
+                                    alimentação e desenvolvimento.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="impacto-numeros" id="impacto-numeros">
+
+            <div class="impacto-numeros-container">
+
+                <div class="impacto-cabecalho">
+
+                    <span class="impacto-tag">
+                        IMPACTO EM NÚMEROS
+                    </span>
+
+                    <p class="impacto-frase">
+                        Mais de seis décadas transformando cuidado em oportunidades,
+                        histórias e novos futuros.
+                    </p>
+
+                </div>
+
+                <div class="impacto-linha">
+
+                    <div class="impacto-item">
+
+                        <div class="impacto-numero">
+                            <span class="contador" data-target="60">0</span>
+                            <span class="sufixo">+</span>
+                        </div>
+
+                        <p>Anos de História</p>
+
+                    </div>
+
+
+                    <div class="impacto-item">
+
+                        <div class="impacto-numero">
+                            <span class="contador" data-target="180">0</span>
+                            <span class="sufixo">+</span>
+                        </div>
+
+                        <p>Crianças Atendidas</p>
+
+                    </div>
+
+
+                    <div class="impacto-item">
+
+                        <div class="impacto-numero">
+                            <span class="contador" data-target="320">0</span>
+                            <span class="sufixo">+</span>
+                        </div>
+
+                        <p>Ações Realizadas</p>
+
+                    </div>
+
+
+                    <div class="impacto-item">
+
+                        <div class="impacto-numero">
+                            <span class="contador" data-target="240">0</span>
+                            <span class="sufixo">+</span>
+                        </div>
+
+                        <p>Famílias Alcançadas</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================
+     RELATOS
+========================================= -->
+
+        <section class="relatos" id="relatos">
+
+            <div class="relatos-container">
+
+                <!-- LADO ESQUERDO -->
+                <div class="relatos-intro">
+
+                    <span class="relatos-tag">
+                        RELATOS
+                    </span>
+
+                    <h2>
+                        Histórias que mostram
+                        o que realmente importa.
+                    </h2>
+
+                    <p>
+                        Por trás de cada ação, existem pessoas,
+                        histórias e momentos que fazem tudo
+                        valer a pena.
+                    </p>
+
+                </div>
+
+
+                <!-- LADO DIREITO -->
+                <div class="relatos-carrossel">
+
+                    <!-- SETA ESQUERDA -->
+                    <button class="relato-seta relato-anterior" type="button" aria-label="Relato anterior">
+                        ←
+                    </button>
+
+
+                    <!-- ÁREA DOS RELATOS -->
+                    <div class="relatos-viewport">
+
+                        <div class="relatos-track">
+
+
+                            <!-- RELATO 1 -->
+                            <article class="relato-card">
+
+                                <div class="relato-foto">
+
+                                    <img src="assets/img/relato-1.avif" alt="Pessoa participante do relato">
+
+                                </div>
+
+                                <div class="relato-conteudo">
+
+                                    <span class="relato-aspas">
+                                        “
+                                    </span>
+
+                                    <p class="relato-texto">
+                                        O Lar representa muito mais do que cuidado.
+                                        É um espaço onde crianças encontram acolhimento,
+                                        oportunidades e pessoas dispostas a fazer a diferença.
+                                    </p>
+
+                                    <div class="relato-pessoa">
+
+                                        <strong>
+                                            Nome da pessoa
+                                        </strong>
+
+                                        <span>
+                                            Parceiro / colaborador / comunidade
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- RELATO 2 -->
+                            <article class="relato-card">
+
+                                <div class="relato-foto">
+
+                                    <img src="assets/img/relato-2.avif" alt="Pessoa participante do relato">
+
+                                </div>
+
+                                <div class="relato-conteudo">
+
+                                    <span class="relato-aspas">
+                                        “
+                                    </span>
+
+                                    <p class="relato-texto">
+                                        Fazer parte dessa história é perceber que cada
+                                        gesto de cuidado pode abrir novas possibilidades
+                                        para o presente e para o futuro.
+                                    </p>
+
+                                    <div class="relato-pessoa">
+
+                                        <strong>
+                                            Nome da pessoa
+                                        </strong>
+
+                                        <span>
+                                            Colaborador do Lar
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- RELATO 3 -->
+                            <article class="relato-card">
+
+                                <div class="relato-foto">
+
+                                    <img src="assets/img/relato-3.jpg" alt="Pessoa participante do relato">
+
+                                </div>
+
+                                <div class="relato-conteudo">
+
+                                    <span class="relato-aspas">
+                                        “
+                                    </span>
+
+                                    <p class="relato-texto">
+                                        Quando a comunidade acredita e participa,
+                                        o trabalho ganha força e consegue alcançar
+                                        ainda mais crianças e famílias.
+                                    </p>
+
+                                    <div class="relato-pessoa">
+
+                                        <strong>
+                                            Nome da pessoa
+                                        </strong>
+
+                                        <span>
+                                            Pessoa da comunidade
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SETA DIREITA -->
+                    <button class="relato-seta relato-proximo" type="button" aria-label="Próximo relato">
+                        →
+                    </button>
+
+                </div>
+
+
+                <!-- INDICADORES -->
+                <div class="relatos-indicadores">
+
+                    <button class="relato-indicador ativo" type="button" aria-label="Ir para relato 1"
+                        data-slide="0"></button>
+
+                    <button class="relato-indicador" type="button" aria-label="Ir para relato 2"
+                        data-slide="1"></button>
+
+                    <button class="relato-indicador" type="button" aria-label="Ir para relato 3"
+                        data-slide="2"></button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+     AÇÕES E MOMENTOS
+========================================= -->
+
+        <section class="acoes-momentos" id="acoes-momentos">
+
+            <div class="acoes-momentos-container">
+
+                <!-- CABEÇALHO -->
+                <div class="acoes-cabecalho">
+
+                    <span class="acoes-tag">
+                        AÇÕES E MOMENTOS
+                    </span>
+
+                    <h2>
+                        Momentos que fazem parte<br>
+                        da nossa história.
+                    </h2>
+
+                </div>
+
+
+                <!-- GRID DE MOMENTOS -->
+                <div class="acoes-grid">
+
+
+                    <!-- CARD 1 -->
+                    <article class="acao-card">
+
+                        <div class="acao-imagem">
+
+                            <img src="assets/img/acao-1.png" alt="Festa Junina do Lar">
+
+                        </div>
+
+                        <div class="acao-conteudo">
+
+                            <h3>
+                                Festa Junina
+                            </h3>
+
+                            <p>
+                                Uma celebração de cultura
+                                e comunidade.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 2 -->
+                    <article class="acao-card">
+
+                        <div class="acao-imagem">
+
+                            <img src="assets/img/acao-2.jpeg" alt="Atividades realizadas com as crianças">
+
+                        </div>
+
+                        <div class="acao-conteudo">
+
+                            <h3>
+                                Atividades
+                            </h3>
+
+                            <p>
+                                Aprender também
+                                é diversão.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 3 -->
+                    <article class="acao-card">
+
+                        <div class="acao-imagem">
+
+                            <img src="assets/img/acao-3.jpeg" alt="Evento realizado pelo Lar">
+
+                        </div>
+
+                        <div class="acao-conteudo">
+
+                            <h3>
+                                Eventos
+                            </h3>
+
+                            <p>
+                                A comunidade fazendo
+                                parte da nossa história.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 4 -->
+                    <article class="acao-card">
+
+                        <div class="acao-imagem">
+
+                            <img src="assets/img/acao-4.png" alt="Palestra com Cortella">
+
+                        </div>
+
+                        <div class="acao-conteudo">
+
+                            <h3>
+                                Eventos Beneficentes
+                            </h3>
+
+                            <p>
+                                Palestra com o renomado Mário Sérgio Cortella.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+     COMO VOCÊ PODE AJUDAR
+========================================= -->
+
+        <section class="como-ajudar" id="como-ajudar">
+
+            <div class="como-ajudar-container">
+
+                <!-- CABEÇALHO -->
+                <div class="como-ajudar-cabecalho">
+
+                    <div class="como-ajudar-titulo">
+
+                        <span class="como-ajudar-tag">
+                            COMO VOCÊ PODE AJUDAR
+                        </span>
+
+                        <h2>
+                            Você também pode fazer parte<br>
+                            dessa história.
+                        </h2>
+
+                    </div>
+
+                    <div class="como-ajudar-intro">
+
+                        <p>
+                            Existem muitas formas de apoiar o Lar
+                            e contribuir para que esse trabalho
+                            continue.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARDS -->
+                <div class="como-ajudar-grid">
+
+
+                    <!-- DOE -->
+                    <article class="ajuda-card ajuda-card-amarelo">
+
+                        <div class="ajuda-icone">
+
+                            <img src="assets/img/ajuda-doe.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Doe
+                        </h3>
+
+                        <p>
+                            Sua contribuição ajuda
+                            a manter e ampliar
+                            nosso trabalho.
+                        </p>
+
+                        <a href="#" class="ajuda-botao" data-doacao>
+                            Doar agora
+                            <span>→</span>
+                        </a>
+
+                    </article>
+
+
+                    <!-- PARCEIRO -->
+                    <article class="ajuda-card ajuda-card-azul">
+
+                        <div class="ajuda-icone">
+
+                            <img src="assets/img/ajuda-parceiro.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Seja parceiro
+                        </h3>
+
+                        <p>
+                            Empresas e organizações
+                            podem fortalecer
+                            nossas ações.
+                        </p>
+
+                        <a href="#" class="ajuda-botao" data-parceria-modal>
+                            Seja parceiro
+                            <span>→</span>
+                        </a>
+
+
+                    </article>
+
+
+                    <!-- COMPARTILHE -->
+                    <article class="ajuda-card ajuda-card-claro">
+
+                        <div class="ajuda-icone">
+
+                            <img src="assets/img/ajuda-compartilhe.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Compartilhe
+                        </h3>
+
+                        <p>
+                            Ajude o Lar a chegar
+                            a mais pessoas.
+                        </p>
+
+                        <a href="#" class="ajuda-botao ajuda-botao-contorno" data-compartilhar>
+                            Compartilhar
+                            <span>→</span>
+                        </a>
+
+                    </article>
+
+
+                    <!-- PARTICIPE -->
+                    <article class="ajuda-card ajuda-card-claro">
+
+                        <div class="ajuda-icone">
+
+                            <img src="assets/img/ajuda-participe.png" alt="">
+
+                        </div>
+
+                        <h3>
+                            Participe
+                        </h3>
+
+                        <p>
+                            Faça parte de campanhas,
+                            eventos e ações.
+                        </p>
+
+                        <a href="#" class="ajuda-botao ajuda-botao-contorno" data-eventos>
+                            Conhecer ações
+                            <span>→</span>
+                        </a>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+     INSTAGRAM + LOCALIZAÇÃO
+========================================= -->
+
+        <section class="conheca-lar">
+
+            <!-- ========================================
+     INSTAGRAM
+========================================= -->
+
+            <div class="conheca-instagram">
+
+                <div class="instagram-conteudo">
+
+                    <div class="instagram-texto">
+
+                        <span class="conheca-tag">
+                            ACOMPANHE
+                        </span>
+
+                        <h2>
+                            Acompanhe o Lar
+                            de perto.
+                        </h2>
+
+                        <p>
+                            Veja nossas ações, momentos especiais
+                            e tudo o que acontece por aqui.
+                        </p>
+
+
+                        <a href="https://www.instagram.com/lar.fermino2018.magnani/" target="_blank"
+                            class="instagram-perfil">
+                            <span class="instagram-icone">
+                                ◎
+                            </span>
+
+                            @lar.fermino2018.magnani
+                        </a>
+
+
+                        <a href="https://www.instagram.com/lar.fermino2018.magnani/" target="_blank"
+                            class="instagram-botao">
+                            Acompanhe no Instagram
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+
+                    <!-- GALERIA INSTAGRAM -->
+                    <div class="instagram-grid">
+
+                        <a href="https://www.instagram.com/p/Dag8qfgFwjH/?img_index=1" target="_blank"
+                            class="instagram-foto">
+                            <img src="assets/img/instagram1.png" alt="Publicação do Instagram do Lar">
+                        </a>
+
+
+                        <a href="https://www.instagram.com/p/DaGW0i0J_3t/" target="_blank" class="instagram-foto">
+                            <img src="assets/img/instagram2.png" alt="Publicação do Instagram do Lar">
+                        </a>
+
+
+                        <a href="https://www.instagram.com/p/DcJUzLgRhqm/" target="_blank" class="instagram-foto">
+                            <img src="assets/img/instagram3.png" alt="Publicação do Instagram do Lar">
+                        </a>
+
+
+                        <a href="https://www.instagram.com/p/DYeq6MbulVy/" target="_blank" class="instagram-foto">
+                            <img src="assets/img/instagram4.png" alt="Publicação do Instagram do Lar">
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ========================================
+         LOCALIZAÇÃO
+    ========================================= -->
+
+            <div class="conheca-localizacao">
+
+                <div class="localizacao-conteudo">
+
+                    <div class="localizacao-texto">
+
+                        <span class="conheca-tag localizacao-tag">
+                            LOCALIZAÇÃO
+                        </span>
+
+                        <h2>
+                            Venha nos conhecer.
+                        </h2>
+
+                        <p>
+                            Rua Albino Trevisan, nº 115<br>
+                            Vila Oitenta<br>
+                            Santa Cruz do Rio Pardo — SP
+                        </p>
+
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Albino+Trevisan+115+Santa+Cruz+do+Rio+Pardo+SP"
+                            target="_blank" class="mapa-botao">
+                            Ver no mapa
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+
+                    <!-- MAPA REAL -->
+                    <div class="mapa">
+
+                        <iframe
+                            src="https://www.google.com/maps?q=Rua+Albino+Trevisan+115+Santa+Cruz+do+Rio+Pardo+SP&output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Localização do Lar da Criança Fermino Magnani"></iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ========================================
+     RODAPÉ FINAL
+========================================= -->
+
+        <footer class="footer-lar" id="rodape">
+
+            <div class="footer-overlay"></div>
+
+            <div class="footer-lar-container">
+
+                <!-- TOPO / CHAMADA FINAL -->
+                <div class="footer-topo">
+
+                    <div class="footer-topo-texto">
+
+                        <span class="footer-tag">
+                            FAÇA PARTE
+                        </span>
+
+                        <h2>
+                            Um futuro melhor começa
+                            quando alguém decide ajudar.
+                        </h2>
+
+                        <p>
+                            Faça parte da história do Lar da Criança Fermino Magnani
+                            e ajude a transformar cuidado em novas oportunidades.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-divisor"></div>
+
+
+                <!-- PARTE INFERIOR -->
+                <div class="footer-infos">
+
+                    <!-- COLUNA 1 -->
+                    <div class="footer-col footer-marca">
+
+                        <img src="assets/img/logo.png" alt="Logo do Lar da Criança Fermino Magnani" class="footer-logo">
+
+                        <p class="footer-descricao">
+                            Cuidado, acolhimento e desenvolvimento
+                            para crianças e famílias da comunidade.
+                        </p>
+
+                    </div>
+
+
+                    <!-- COLUNA 2 -->
+                    <div class="footer-col footer-links">
+
+                        <h3>
+                            Navegação
+                        </h3>
+
+                        <ul>
+                            <li><a href="#hero">Início</a></li>
+                            <li><a href="#quem-e-o-lar">O Lar</a></li>
+                            <li><a href="#o-que-fazemos">O que fazemos</a></li>
+                            <li><a href="#como-ajudar">Como ajudar</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- COLUNA 3 -->
+                    <div class="footer-col footer-contato">
+
+                        <h3>
+                            Contato
+                        </h3>
+
+                        <ul>
+                            <li>(14) 3372-1836</li>
+                            <li>lar.firmino2018@gmail.com</li>
+                            <li>@lar.fermino2018.magnani</li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- COLUNA 4 -->
+                    <div class="footer-col footer-endereco">
+
+                        <h3>
+                            Endereço
+                        </h3>
+
+                        <p>
+                            Rua Albino Trevisan, nº 115<br>
+                            Vila Oitenta<br>
+                            Santa Cruz do Rio Pardo/SP
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-bottom">
+
+                    <p>
+                        © 2026 Lar da Criança Fermino Magnani. Todos os direitos reservados.
+                    </p>
+
+                    <div class="footer-redes">
+                        <a href="https://www.instagram.com/lar.fermino2018.magnani/" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/pages/Lar-da-Crian%C3%A7a-Fermino-Magnani/111212248963868"
+                            target="_blank">Facebook</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
