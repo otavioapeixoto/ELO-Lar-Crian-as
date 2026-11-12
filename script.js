@@ -99,11 +99,6 @@ linksMenu.forEach(link => {
 
 const gruposAnimacao = [
 
-    /* HERO */
-
-    ".hero-conteudo > *",
-
-
     /* QUEM É O LAR */
 
     ".quem-lar-foto-area",
@@ -2473,3 +2468,261 @@ document.addEventListener(
 
     }
 );
+
+
+/* ========================================
+   CARROSSEL DE BANNERS INICIAIS
+======================================== */
+
+const bannerTrack = document.getElementById("bannerTrack");
+
+const banners = document.querySelectorAll(".banner-slide");
+
+const bannerIndicadores = document.querySelectorAll(".banner-indicador");
+
+const bannerAnterior = document.getElementById("bannerAnterior");
+
+const bannerProximo = document.getElementById("bannerProximo");
+
+const bannerArea = document.querySelector(".banner-inicial");
+
+
+let bannerAtual = 0;
+
+let intervaloBanners = null;
+
+
+/* ========================================
+   MOSTRAR BANNER
+======================================== */
+
+function mostrarBanner(indice) {
+
+    if (!bannerTrack || banners.length === 0) return;
+
+    // Permite navegar em ciclo
+    bannerAtual =
+        (indice + banners.length) % banners.length;
+
+    // Desliza a faixa horizontalmente
+    bannerTrack.style.transform =
+        `translateX(-${bannerAtual * 100}%)`;
+
+    // Atualiza os indicadores
+    bannerIndicadores.forEach((indicador, index) => {
+
+        const ativo = index === bannerAtual;
+
+        indicador.classList.toggle("ativo", ativo);
+
+        indicador.setAttribute(
+            "aria-current",
+            ativo ? "true" : "false"
+        );
+
+    });
+
+}
+
+
+/* ========================================
+   PRÓXIMO E ANTERIOR
+======================================== */
+
+function proximoBanner() {
+
+    mostrarBanner(bannerAtual + 1);
+
+}
+
+
+function bannerAnteriorFuncao() {
+
+    mostrarBanner(bannerAtual - 1);
+
+}
+
+
+/* ========================================
+   BOTÕES DE NAVEGAÇÃO
+======================================== */
+
+bannerProximo?.addEventListener(
+    "click",
+    () => {
+
+        proximoBanner();
+
+        reiniciarBanners();
+
+    }
+);
+
+
+bannerAnterior?.addEventListener(
+    "click",
+    () => {
+
+        bannerAnteriorFuncao();
+
+        reiniciarBanners();
+
+    }
+);
+
+
+/* ========================================
+   INDICADORES
+======================================== */
+
+bannerIndicadores.forEach(indicador => {
+
+    indicador.addEventListener("click", () => {
+
+        const indice = Number(indicador.dataset.banner);
+
+        mostrarBanner(indice);
+
+        reiniciarBanners();
+
+    });
+
+});
+
+
+/* ========================================
+   AUTOMAÇÃO
+======================================== */
+
+function iniciarBanners() {
+
+    clearInterval(intervaloBanners);
+
+    if (banners.length <= 1) return;
+
+    intervaloBanners = setInterval(() => {
+
+        proximoBanner();
+
+    }, 5500);
+
+}
+
+
+function pausarBanners() {
+
+    clearInterval(intervaloBanners);
+
+}
+
+
+function reiniciarBanners() {
+
+    pausarBanners();
+
+    iniciarBanners();
+
+}
+
+
+/* ========================================
+   PAUSAR AO INTERAGIR
+======================================== */
+
+bannerArea?.addEventListener(
+    "mouseenter",
+    pausarBanners
+);
+
+
+bannerArea?.addEventListener(
+    "mouseleave",
+    iniciarBanners
+);
+
+
+bannerArea?.addEventListener(
+    "focusin",
+    pausarBanners
+);
+
+
+bannerArea?.addEventListener(
+    "focusout",
+    event => {
+
+        if (!bannerArea.contains(event.relatedTarget)) {
+
+            iniciarBanners();
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   REDUÇÃO DE MOVIMENTO
+======================================== */
+
+const reduzirMovimentoBanners =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+/* ========================================
+   INICIAR CARROSSEL
+======================================== */
+
+if (bannerTrack && banners.length > 0) {
+
+    mostrarBanner(0);
+
+    if (!reduzirMovimentoBanners) {
+
+        iniciarBanners();
+
+    }
+
+}
+
+
+
+/* ========================================
+   PODCAST - ANIMAÇÃO DE ENTRADA
+======================================== */
+
+const elementosPodcast = document.querySelectorAll(
+    ".podcast-reveal"
+);
+
+const observerPodcast = new IntersectionObserver(
+    (entries, observer) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                    "podcast-visivel"
+                );
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.2
+    }
+);
+
+
+elementosPodcast.forEach((elemento) => {
+
+    observerPodcast.observe(elemento);
+
+});

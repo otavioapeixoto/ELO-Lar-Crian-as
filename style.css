@@ -89,109 +89,86 @@ button {
 
 
 
+
 /* ========================================
    HEADER
 ======================================== */
 
 .header {
-
-    position: absolute;
-
+    position: relative;
     top: 0;
     left: 0;
-
     width: 100%;
-
     z-index: 20;
 
+    background: var(--verde);
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
 }
 
-
 .header-container {
-
     width: min(90%, 1600px);
-
-    height: 135px;
+    min-height: 120px;
 
     margin: 0 auto;
 
     display: grid;
-
-    grid-template-columns:
-        minmax(280px, 1fr) auto minmax(280px, 1fr);
+    grid-template-columns: minmax(240px, 1fr) auto minmax(200px, 1fr);
 
     align-items: center;
-
-    gap: 40px;
-
+    gap: 32px;
 }
-
 
 
 /* LOGO */
 
 .logo {
-
     justify-self: start;
 
     display: flex;
-
     align-items: center;
-
 }
-
 
 .logo img {
-
-    width: 300px;
+    width: 280px;
     max-width: 100%;
+    max-height: 95px;
 
     height: auto;
-
     object-fit: contain;
-
 }
-
 
 
 /* MENU */
 
 .nav {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    gap: 70px;
-
+    gap: 55px;
 }
 
-
 .nav a {
-
     position: relative;
 
     color: var(--off-white);
 
     font-family: var(--fonte-texto);
-
-    font-size: 19px;
+    font-size: 18px;
 
     white-space: nowrap;
 
     transition: opacity 0.2s ease;
-
 }
 
+.nav a:hover {
+    opacity: 0.8;
+}
 
 .nav a::after {
-
     content: "";
 
     position: absolute;
-
     left: 0;
     bottom: -9px;
 
@@ -201,429 +178,63 @@ button {
     background: var(--amarelo);
 
     transform: scaleX(0);
-
     transform-origin: left;
 
     transition: transform 0.25s ease;
-
 }
-
 
 .nav a:hover::after {
-
     transform: scaleX(1);
-
 }
-
 
 
 /* BOTÃO DOAR */
 
 .btn-doar {
-
     justify-self: end;
 
     min-width: 180px;
-
-    padding: 17px 29px;
-
-    border-radius: 999px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    background: var(--amarelo);
-
-    color: #31554a;
-
-    font-size: 17px;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-
-}
-
-
-.btn-doar:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.18);
-
-}
-
-
-
-/* ========================================
-   HERO
-======================================== */
-
-.hero {
-
-    position: relative;
-
-    width: 100%;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    overflow: hidden;
-
-}
-
-
-
-/* FOTO */
-
-.hero-image {
-
-    position: absolute;
-
-    inset: 0;
-
-    background-image:
-        url("assets/img/hero.jpeg");
-
-    background-size: cover;
-
-    background-position:
-        center center;
-
-    background-repeat: no-repeat;
-
-    z-index: 0;
-
-}
-
-
-
-/* OVERLAY
-
-   Mais escuro à esquerda,
-   praticamente transparente à direita.
-
-   Isso deixa a foto visível,
-   igual ao wireframe.
-*/
-
-.hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    background:
-
-        linear-gradient(90deg,
-
-            rgba(10, 32, 27, 0.90) 0%,
-
-            rgba(10, 32, 27, 0.76) 28%,
-
-            rgba(10, 32, 27, 0.42) 53%,
-
-            rgba(10, 32, 27, 0.08) 80%,
-
-            rgba(10, 32, 27, 0.02) 100%);
-
-}
-
-
-
-/* CONTAINER */
-
-.hero-container {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: min(90%, 1600px);
-
-    margin: 0 auto;
-
-    padding-top: 130px;
-
-}
-
-
-
-/* CONTEÚDO */
-
-.hero-content {
-
-    width: min(670px, 48vw);
-
-}
-
-
-
-/* TEXTO PEQUENO */
-
-.hero-tag {
-
-    display: block;
-
-    margin-bottom: 24px;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-    color: var(--off-white);
-
-}
-
-
-
-/* TÍTULO */
-
-.hero h1 {
-
-    font-family:
-        var(--fonte-titulo);
-
-    font-weight: 400;
-
-    font-size:
-        clamp(58px,
-            5.1vw,
-            92px);
-
-    line-height: 0.99;
-
-    letter-spacing: 0;
-
-    color: var(--off-white);
-
-    margin-bottom: 36px;
-
-}
-
-
-
-/* PALAVRA SONHAR */
-
-.hero h1>span {
-
-    display: inline-block;
-
-    position: relative;
-
-    color: var(--amarelo);
-
-}
-
-
-
-/* SUBLINHADO
-
-   Não é doodle.
-   É apenas um detalhe tipográfico
-   abaixo da palavra principal.
-*/
-
-.hero h1>span::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 1%;
-    bottom: -9px;
-
-    width: 89%;
-    height: 5px;
-
-    border-radius: 999px;
-
-    background: var(--amarelo);
-
-}
-
-
-
-/* PARÁGRAFO */
-
-.hero-content>p {
-
-    width: min(520px, 100%);
-
-    font-family:
-        var(--fonte-texto);
-
-    font-size: 17px;
-
-    line-height: 1.55;
-
-    color:
-        rgba(255,
-            244,
-            213,
-            0.92);
-
-    margin-bottom: 15px;
-
-}
-
-
-
-/* ========================================
-   BOTÕES
-======================================== */
-
-.hero-buttons {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-}
-
-
-
-/* PRINCIPAL */
-
-.btn-primary {
-
-    min-width: 185px;
-
     padding: 16px 29px;
 
     border-radius: 999px;
 
-    display: inline-flex;
-
+    display: flex;
     justify-content: center;
-
     align-items: center;
 
     background: var(--amarelo);
-
     color: #31554a;
 
-    font-size: 16px;
+    font-size: 17px;
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
-
 }
 
-
-.btn-primary:hover {
-
+.btn-doar:hover {
     transform: translateY(-3px);
 
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.18);
-
 }
 
 
-
-/* SECUNDÁRIO */
-
-.btn-secondary {
-
-    min-width: 210px;
-
-    padding: 14px 26px;
-
-    border:
-
-        2px solid rgba(255,
-            244,
-            213,
-            0.80);
-
-    border-radius: 999px;
-
-    display: inline-flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 20px;
-
-    color: var(--off-white);
-
-    font-size: 16px;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-
-}
-
-
-.btn-secondary:hover {
-
-    background:
-        rgba(255,
-            244,
-            213,
-            0.10);
-
-    transform:
-        translateY(-3px);
-
-}
-
-
-.arrow {
-
-    font-size: 21px;
-
-    transition:
-        transform 0.25s ease;
-
-}
-
-
-.btn-secondary:hover .arrow {
-
-    transform:
-        translateX(5px);
-
-}
-
-
-
-/* ========================================
-   MENU MOBILE
-======================================== */
+/* MENU MOBILE */
 
 .menu-mobile {
-
     display: none;
 
     width: 45px;
     height: 45px;
 
     border: 0;
-
     background: transparent;
 
     cursor: pointer;
-
 }
 
-
 .menu-mobile span {
-
     display: block;
 
     width: 27px;
@@ -631,11 +242,172 @@ button {
 
     margin: 6px auto;
 
-    background:
-        var(--off-white);
-
+    background: var(--off-white);
 }
 
+
+/* ========================================
+   BANNERS INICIAIS
+======================================== */
+
+.banner-inicial {
+    position: relative;
+
+    width: 100%;
+    height: clamp(380px, 68vh, 680px);
+
+    min-height: 380px;
+
+    overflow: hidden;
+
+    background: var(--verde);
+}
+
+
+/* ÁREA VISÍVEL */
+
+.banner-viewport {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* FAIXA QUE DESLIZA */
+
+.banner-track {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    transition:
+        transform 0.85s cubic-bezier(.22, .75, .2, 1);
+
+    will-change: transform;
+}
+
+
+/* CADA BANNER */
+
+.banner-slide {
+    flex: 0 0 100%;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* IMAGENS */
+
+.banner-slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* ========================================
+   SETAS
+======================================== */
+
+.banner-seta {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 3;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(49, 93, 80, 0.78);
+    color: var(--off-white);
+
+    font-size: 34px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(5px);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.banner-seta:hover {
+    background: var(--verde);
+
+    transform:
+        translateY(-50%) scale(1.08);
+}
+
+.banner-anterior {
+    left: 25px;
+}
+
+.banner-proximo {
+    right: 25px;
+}
+
+
+/* ========================================
+   INDICADORES
+======================================== */
+
+.banner-indicadores {
+    position: absolute;
+
+    left: 50%;
+    bottom: 24px;
+
+    transform: translateX(-50%);
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.banner-indicador {
+    width: 10px;
+    height: 10px;
+
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+
+    background: rgba(255, 244, 213, 0.65);
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.banner-indicador.ativo {
+    width: 30px;
+
+    background: var(--amarelo);
+}
 
 
 /* ========================================
@@ -645,198 +417,126 @@ button {
 @media (max-width: 1100px) {
 
     .header-container {
-
-        grid-template-columns:
-            1fr auto auto;
-
+        grid-template-columns: 1fr auto auto;
+        gap: 22px;
     }
-
 
     .logo img {
-
-        width: 320px;
-
+        width: 240px;
     }
-
 
     .nav {
-
-        gap: 35px;
-
+        gap: 25px;
     }
 
+    .nav a {
+        font-size: 16px;
+    }
 
-    .hero-content {
-
-        width: 58vw;
-
+    .btn-doar {
+        min-width: 150px;
+        padding: 14px 20px;
     }
 
 }
-
 
 
 @media (max-width: 850px) {
 
     .header-container {
-
-        height: 100px;
+        min-height: 95px;
 
         display: flex;
-
-        justify-content:
-            space-between;
-
+        justify-content: space-between;
     }
-
 
     .logo img {
-
-        width: 260px;
-
+        width: 240px;
     }
-
 
     .nav,
-    .btn-doar {
-
+    .header .btn-doar {
         display: none;
-
     }
-
 
     .menu-mobile {
-
         display: block;
-
     }
 
-
-    .hero {
-
-        min-height: 100svh;
-
+    .banner-inicial {
+        height: clamp(330px, 62vh, 540px);
+        min-height: 330px;
     }
 
-
-    .hero-image {
-
-        background-position:
-            62% center;
-
+    .banner-seta {
+        width: 42px;
+        height: 42px;
+        font-size: 29px;
     }
 
-
-    .hero-overlay {
-
-        background:
-
-            linear-gradient(90deg,
-
-                rgba(10, 32, 27, .88) 0%,
-
-                rgba(10, 32, 27, .68) 60%,
-
-                rgba(10, 32, 27, .32) 100%);
-
+    .banner-anterior {
+        left: 15px;
     }
 
-
-    .hero-container {
-
-        padding-top: 120px;
-
-    }
-
-
-    .hero-content {
-
-        width: 80%;
-
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            clamp(52px,
-                10vw,
-                75px);
-
+    .banner-proximo {
+        right: 15px;
     }
 
 }
-
 
 
 @media (max-width: 600px) {
 
-    .header-container,
-    .hero-container {
-
-        width: calc(100% - 40px);
-
+    .header-container {
+        width: calc(100% - 36px);
+        min-height: 82px;
     }
-
 
     .logo img {
-
-        width: 220px;
-
+        width: 195px;
     }
 
-
-    .hero-content {
-
-        width: 100%;
-
+    .banner-inicial {
+        height: 55svh;
+        min-height: 280px;
+        max-height: 430px;
     }
 
-
-    .hero-tag {
-
-        font-size: 11px;
-
+    .banner-slide img {
+        object-position: center;
     }
 
-
-    .hero h1 {
-
-        font-size: 50px;
-
-        line-height: 1.02;
-
+    .banner-seta {
+        width: 36px;
+        height: 36px;
+        font-size: 25px;
     }
 
-
-    .hero-content>p {
-
-        font-size: 15px;
-
-        max-width: 390px;
-
+    .banner-anterior {
+        left: 10px;
     }
 
-
-    .hero-buttons {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
+    .banner-proximo {
+        right: 10px;
     }
 
-
-    .btn-primary,
-    .btn-secondary {
-
-        width: 100%;
-
-        max-width: 300px;
-
+    .banner-indicadores {
+        bottom: 16px;
     }
 
 }
+
+
+/* RESPEITAR REDUÇÃO DE MOVIMENTO */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .banner-track {
+        transition: none;
+    }
+
+}
+
 
 /* ========================================
    QUEM É O LAR
@@ -8383,3 +8083,381 @@ input:checked
     }
 
 }
+
+
+/* ========================================
+   PODCAST - POR DENTRO DO LAR
+======================================== */
+
+.podcast {
+    width: 100%;
+    background: var(--off-white);
+    padding: 85px 0;
+    overflow: hidden;
+}
+
+.podcast-container {
+    width: min(88%, 1400px);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 85px;
+}
+
+
+/* ========================================
+   CAPA
+======================================== */
+
+.podcast-capa {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+
+.podcast-capa-fundo {
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+
+    background: var(--amarelo);
+    border-radius: 32px;
+    transform: rotate(-3deg);
+    opacity: 0.9;
+}
+
+.podcast-imagem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(39, 75, 58, 0.15);
+}
+
+.podcast-capa-legenda {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+
+    padding: 10px 17px;
+    border-radius: 30px;
+
+    background: var(--off-white);
+    color: var(--verde);
+
+    font-family: var(--fonte-texto);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+
+/* ========================================
+   CONTEÚDO
+======================================== */
+
+.podcast-conteudo {
+    width: 100%;
+    max-width: 620px;
+}
+
+.podcast-tag {
+    display: inline-block;
+    margin-bottom: 15px;
+
+    color: var(--azul);
+
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.podcast-conteudo h2 {
+    margin: 0 0 20px;
+
+    color: var(--verde);
+
+    font-family: var(--fonte-titulo);
+    font-size: clamp(42px, 4.5vw, 62px);
+    line-height: 1.05;
+    font-weight: 400;
+}
+
+.podcast-descricao {
+    max-width: 560px;
+    margin: 0 0 30px;
+
+    color: var(--verde);
+
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+
+/* ========================================
+   CARD DO EPISÓDIO
+======================================== */
+
+.podcast-episodio {
+    width: 100%;
+    padding: 24px;
+
+    background: rgba(121, 184, 209, 0.17);
+    border: 1px solid rgba(121, 184, 209, 0.35);
+    border-radius: 25px;
+
+    display: grid;
+    grid-template-columns: 125px minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+}
+
+
+/* CAPA QUADRADA */
+
+.podcast-episodio-capa {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    border-radius: 17px;
+    box-shadow: 0 6px 15px rgba(39, 75, 58, 0.12);
+}
+
+
+/* INFORMAÇÕES */
+
+.podcast-episodio-conteudo {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+.podcast-episodio-numero {
+    color: var(--verde);
+    font-family: var(--fonte-texto);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.podcast-episodio-conteudo h3 {
+    margin: 0;
+
+    color: var(--verde);
+    font-family: var(--fonte-titulo);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.podcast-episodio-conteudo p {
+    margin: 0;
+
+    color: var(--verde);
+    font-family: var(--fonte-texto);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* PLAYER */
+
+.podcast-audio {
+    display: block;
+    width: 100%;
+    height: 38px;
+}
+
+
+
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 950px) {
+
+    .podcast-episodio {
+        grid-template-columns: 105px minmax(0, 1fr);
+        gap: 18px;
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .podcast-episodio {
+        grid-template-columns: 85px minmax(0, 1fr);
+        gap: 14px;
+        padding: 16px;
+    }
+
+    .podcast-episodio-conteudo h3 {
+        font-size: 21px;
+    }
+
+    .podcast-episodio-conteudo p {
+        font-size: 12px;
+    }
+
+    .podcast-botao {
+        font-size: 12px;
+        padding: 9px 15px;
+    }
+
+}
+
+
+/* ========================================
+   PLAYER DE ÁUDIO
+======================================== */
+
+.podcast-audio {
+    display: block;
+    width: 100%;
+    height: 42px;
+}
+
+
+/* ========================================
+   BOTÃO SPOTIFY
+======================================== */
+
+.podcast-botao {
+    width: fit-content;
+    min-height: 45px;
+    padding: 11px 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+
+    border-radius: 50px;
+
+    background: var(--verde);
+    color: var(--off-white);
+
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.podcast-botao span {
+    font-size: 19px;
+    transition: transform 0.3s ease;
+}
+
+.podcast-botao:hover {
+    background: var(--amarelo);
+    color: var(--verde);
+    transform: translateY(-3px);
+}
+
+.podcast-botao:hover span {
+    transform: translateX(5px);
+}
+
+
+/* ========================================
+   ANIMAÇÃO DE ENTRADA
+======================================== */
+
+.podcast-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.podcast-reveal.podcast-visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 950px) {
+
+    .podcast-container {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 45px;
+    }
+
+    .podcast-capa {
+        max-width: 350px;
+    }
+
+    .podcast-episodio {
+        padding: 22px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .podcast {
+        padding: 65px 0;
+    }
+
+    .podcast-container {
+        width: min(88%, 500px);
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .podcast-capa {
+        width: 85%;
+        max-width: 360px;
+    }
+
+    .podcast-conteudo {
+        text-align: center;
+    }
+
+    .podcast-conteudo h2 {
+        font-size: 48px;
+    }
+
+    .podcast-descricao {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .podcast-episodio {
+        text-align: left;
+    }
+
+    .podcast-botao {
+        margin: 0 auto;
+    }
+
+}
+
